@@ -1,0 +1,87 @@
+<!-- increase charge -->
+<div class="bg-zinc-900 sm:px-6 sm:py-4 p-4 rounded-2xl shadow-black shadow-md">
+  <p *ngIf="paymentStatus" class="text-rose-600 pb-4">{{ paymentStatus }}</p>
+
+  <!-- select amount -->
+  <p class="text-sm text-zinc-600">Amount :</p>
+  <div class="flex items-center gap-4">
+    <p class="text-zinc-500 shrink-0">increase by :</p>
+    <app-input
+      theme="4"
+      (changeHandler)="amountHandler($event)"
+      placeholder="choose the amount"
+      type="number"
+    ></app-input>
+    <p class="text-zinc-500">USD</p>
+  </div>
+
+  <!-- select method -->
+  <p class="text-sm text-zinc-600 mt-4">Method :</p>
+  <p class="text-zinc-500 mb-2">choose your payment method :</p>
+  <div class="flex items-center gap-4 flex-wrap">
+    <!-- payment options -->
+    <div
+      class="w-44 h-12 bg-zinc-800 rounded-xl border-2 border-zinc-600 flex items-center gap-2 group hover:border-rose-600 transition-all duration-200"
+      (click)="createCryptoPayment()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        viewBox="0 96 960 960"
+        width="48"
+        class="w-8 fill-zinc-500 group-hover:fill-rose-600 transition-all duration-200"
+      >
+        <path
+          d="M370 936v-90H240v-60h90V366h-90v-60h130v-90h60v90h110v-90h60v93q54 11 87 53t33 94q0 28-11 55.5T677 561q39 20 61 56.5t22 78.5q0 62-43.5 106T610 846h-10v90h-60v-90H430v90h-60Zm20-390h180q38 0 64-26.5t26-63.5q0-38-26-64t-64-26H390v180Zm0 240h220q38 0 64-26.5t26-63.5q0-38-26-64t-64-26H390v180Z"
+        />
+      </svg>
+      <p
+        class="text-zinc-500 group-hover:text-rose-600 transition-all duration-200"
+      >
+        Crypto currency
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- invoices -->
+<p class="text-sm text-zinc-600 my-4">Invoices :</p>
+
+<div
+  class="bg-zinc-900 sm:px-6 sm:py-4 p-4 rounded-2xl shadow-black shadow-md flex justify-between flex-wrap items-center gap-4"
+>
+  <!-- amount -->
+  <div class="flex gap-2">
+    <p class="text-zinc-500">amount:</p>
+    <p class="text-zinc-500 font-bold">100 $</p>
+  </div>
+
+  <!-- method -->
+  <div class="flex gap-2">
+    <p class="text-zinc-500">method:</p>
+    <p class="text-zinc-500 font-bold">crypto currency</p>
+  </div>
+
+  <!-- date -->
+  <div class="flex gap-2">
+    <p class="text-zinc-500">date:</p>
+    <p class="text-zinc-500 font-bold">1/1/2001 @ 16:22:30</p>
+  </div>
+
+  <!-- status -->
+  <div class="flex gap-2">
+    <p class="text-zinc-500">status:</p>
+    <p class="text-zinc-500 font-bold">pending</p>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="48"
+      viewBox="0 96 960 960"
+      width="48"
+      class="w-6 fill-rose-600 h-7 animate-spin"
+    >
+      <path
+        d="M167 896v-60h130l-15-12q-64-51-93-111t-29-134q0-106 62.5-190.5T387 272v62q-75 29-121 96.5T220 579q0 63 23.5 109.5T307 769l30 21V666h60v230H167Zm407-15v-63q76-29 121-96.5T740 573q0-48-23.5-97.5T655 388l-29-26v124h-60V256h230v60H665l15 14q60 56 90 120t30 123q0 106-62 191T574 881Z"
+      />
+    </svg>
+  </div>
+</div>

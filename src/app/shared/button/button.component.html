@@ -1,0 +1,17 @@
+<button
+  [type]="type"
+  class="border-2 border-rose-600 rounded-lg px-6 py-2 overflow-hidden relative text-rose-600 transition-al before:absolute before:left-0 before:bottom-0 before:w-full before:h-0 before:bg-rose-600 before:transition-all before:duration-100 hover:before:h-full hover:text-zinc-900 hover:border-zinc-800 before:-z-10 z-0 transition-all duration-100"
+  id="button"
+  *ngIf="theme == '0'"
+>
+  {{ text }}
+</button>
+
+<button
+  [type]="type"
+  class="border-2 border-zinc-600 rounded-lg px-6 py-2 overflow-hidden relative text-zinc-500 transition-al before:absolute before:left-0 before:bottom-0 before:w-full before:h-0 before:bg-zinc-600 before:transition-all before:duration-100 hover:before:h-full hover:text-zinc-900 hover:border-zinc-800 before:-z-10 z-0 transition-all duration-100"
+  id="button"
+  *ngIf="theme == '1'"
+>
+  {{ text }}
+</button>

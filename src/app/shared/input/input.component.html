@@ -1,0 +1,42 @@
+<input
+  class="bg-zinc-800 outline-none rounded-xl p-2 text-md text-zinc-400 border-2 border-rose-700 placeholder-zinc-600 w-48"
+  *ngIf="theme == '1'"
+  [type]="type"
+  [placeholder]="placeholder"
+  [name]="name"
+  #self
+  (change)="onChange(self.value)"
+/>
+
+<input
+  class="accent-rose-600 w-8"
+  *ngIf="theme == '2'"
+  [type]="type"
+  [placeholder]="placeholder"
+  [name]="name"
+  #self
+  (change)="onChange(self.checked)"
+/>
+
+<input
+  class="bg-zinc-800 outline-none rounded-xl p-2 text-md text-zinc-400 border-2 border-zinc-600 placeholder-zinc-600 sm:w-48 w-36 cursor-not-allowed"
+  *ngIf="theme == '3'"
+  [type]="type"
+  [placeholder]="placeholder"
+  [name]="name"
+  [value]="value"
+  #self
+  readonly
+  (change)="onChange(self.value)"
+/>
+
+<input
+  class="bg-zinc-800 outline-none rounded-xl p-2 text-md text-zinc-400 border-2 border-zinc-600 placeholder-zinc-600 w-full"
+  *ngIf="theme == '4'"
+  [type]="type"
+  [placeholder]="placeholder"
+  [name]="name"
+  [value]="value"
+  #self
+  (change)="onChange(self.value)"
+/>

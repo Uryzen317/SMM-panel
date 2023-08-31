@@ -1,0 +1,302 @@
+<!-- theme 1 for username -->
+<div *ngIf="theme == '1'">
+  <!-- background -->
+  <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75"></div>
+
+  <!-- conntent -->
+  <div
+    class="w-72 bg-zinc-900 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-4 py-3 flex flex-col gap-4 shadow-sm shadow-rose-600"
+  >
+    <!-- header -->
+    <p class="text-zinc-500">please enter your new username :</p>
+
+    <!-- status -->
+    <p *ngIf="usernameStatus" class="text-rose-500 text-sm">
+      {{ usernameStatus }}
+    </p>
+
+    <!-- input -->
+    <app-input
+      placeholder="new username"
+      theme="4"
+      type="text"
+      (changeHandler)="usernameChange($event)"
+    ></app-input>
+
+    <!-- button(s) -->
+    <div class="w-full flex justify-end gap-4">
+      <app-button
+        theme="1"
+        text="Cancel"
+        (click)="usernameClose()"
+      ></app-button>
+      <app-button
+        theme="0"
+        text="Done"
+        (click)="usernameHandler()"
+      ></app-button>
+    </div>
+  </div>
+</div>
+
+<!-- theme 2 for email -->
+<div *ngIf="theme == '2'">
+  <!-- background -->
+  <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75"></div>
+
+  <!-- conntent -->
+  <div
+    class="w-72 bg-zinc-900 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-4 py-3 flex flex-col gap-4 shadow-sm shadow-rose-600"
+  >
+    <!-- header -->
+    <p class="text-zinc-500">please enter your new email :</p>
+
+    <!-- status -->
+    <p *ngIf="emailStatus" class="text-rose-500 text-sm">
+      {{ emailStatus }}
+    </p>
+
+    <!-- input -->
+    <app-input
+      placeholder="new email"
+      theme="4"
+      type="text"
+      (changeHandler)="emailChange($event)"
+    ></app-input>
+
+    <!-- button(s) -->
+    <div class="w-full flex justify-end gap-4">
+      <app-button theme="1" text="Cancel" (click)="emailClose()"></app-button>
+      <app-button theme="0" text="Done" (click)="emailHandler()"></app-button>
+    </div>
+  </div>
+</div>
+
+<!-- theme 3 for password -->
+<div *ngIf="theme == '3'">
+  <!-- background -->
+  <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75"></div>
+
+  <!-- conntent -->
+  <div
+    class="w-72 bg-zinc-900 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-4 py-3 flex flex-col gap-4 shadow-sm shadow-rose-600"
+  >
+    <!-- header -->
+    <p class="text-zinc-500">
+      please enter your current password, your new password and repeat it :
+    </p>
+
+    <!-- status -->
+    <p *ngIf="passwordStatus" class="text-rose-500 text-sm">
+      {{ passwordStatus }}
+    </p>
+
+    <!-- input(s) -->
+    <app-input
+      placeholder="current password"
+      theme="4"
+      type="text"
+      (changeHandler)="oldPasswordChange($event)"
+    ></app-input>
+    <app-input
+      placeholder="new password"
+      theme="4"
+      type="text"
+      (changeHandler)="passwordChange($event)"
+    ></app-input>
+    <app-input
+      placeholder="repeat new password"
+      theme="4"
+      type="text"
+      (changeHandler)="repeatPasswordChange($event)"
+    ></app-input>
+
+    <!-- button(s) -->
+    <div class="w-full flex justify-end gap-4">
+      <app-button
+        theme="1"
+        text="Cancel"
+        (click)="passwordClose()"
+      ></app-button>
+      <app-button
+        theme="0"
+        text="Done"
+        (click)="passwordHandler()"
+      ></app-button>
+    </div>
+  </div>
+</div>
+
+<!-- theme 4 for confirm email -->
+<div *ngIf="theme == '4'">
+  <!-- background -->
+  <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75"></div>
+
+  <!-- conntent -->
+  <div
+    class="w-72 bg-zinc-900 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-4 py-3 flex flex-col gap-4 shadow-sm shadow-rose-600"
+  >
+    <!-- header -->
+    <p class="text-zinc-500">
+      an email has been sent to you. click on the link in the sent email to
+      confirm your email.
+    </p>
+
+    <!-- button(s) -->
+    <div class="w-full flex justify-end gap-4">
+      <app-button
+        theme="0"
+        text="Got it!"
+        (click)="confirmEmailClose()"
+      ></app-button>
+    </div>
+  </div>
+</div>
+
+<!-- theme 5 for logout prompt -->
+<div *ngIf="theme == '5'">
+  <!-- background -->
+  <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75"></div>
+
+  <!-- conntent -->
+  <div
+    class="w-72 bg-zinc-900 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-4 py-3 flex flex-col gap-4 shadow-sm shadow-rose-600"
+  >
+    <!-- header -->
+    <p class="text-zinc-500">do you want to log out ?</p>
+
+    <!-- button(s) -->
+    <div class="w-full flex justify-end gap-4">
+      <app-button theme="1" text="cancel" (click)="logoutClose()"></app-button>
+      <app-button theme="0" text="yes" (click)="logoutHandler()"></app-button>
+    </div>
+  </div>
+</div>
+
+<!-- theme 6 for deleting account -->
+<div *ngIf="theme == '6'">
+  <!-- background -->
+  <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75"></div>
+
+  <!-- conntent -->
+  <div
+    class="w-72 bg-zinc-900 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-4 py-3 flex flex-col gap-4 shadow-sm shadow-rose-600"
+  >
+    <!-- header -->
+    <p class="text-zinc-500">
+      an email has been sent to you. click on the link in the sent email to
+      delete your account.
+    </p>
+
+    <!-- button(s) -->
+    <div class="w-full flex justify-end gap-4">
+      <app-button
+        theme="0"
+        text="Got it!"
+        (click)="deleteAccountClose()"
+      ></app-button>
+    </div>
+  </div>
+</div>
+
+<!-- theme 7 for order service -->
+<div *ngIf="theme == '7'">
+  <!-- background -->
+  <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75"></div>
+
+  <!-- conntent -->
+  <div
+    class="w-72 bg-zinc-900 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-4 py-3 flex flex-col gap-2 shadow-sm shadow-rose-600"
+  >
+    <!-- status -->
+    <p class="text-rose-600" *ngIf="orderStatus">{{ orderStatus }}</p>
+
+    <!-- name -->
+    <p class="text-sm text-zinc-500">name:</p>
+    <p
+      class="text-zinc-400 bg-zinc-950 py-2 px-4 rounded-xl border border-zinc-700"
+    >
+      {{ service.name }}
+    </p>
+
+    <!-- extra -->
+    <div class="flex gap-2">
+      <!-- min -->
+      <div class="w-1/3">
+        <p class="text-sm text-zinc-500">min:</p>
+        <p
+          class="text-zinc-400 bg-zinc-950 py-2 px-4 rounded-xl mt-2 border border-zinc-700 truncate"
+        >
+          {{ service.min }}
+        </p>
+      </div>
+
+      <!-- max -->
+      <div class="w-1/3">
+        <p class="text-sm text-zinc-500">max:</p>
+        <p
+          class="text-zinc-400 bg-zinc-950 py-2 px-4 rounded-xl mt-2 border border-zinc-700 truncate"
+        >
+          {{ service.max }}
+        </p>
+      </div>
+
+      <!-- price -->
+      <div class="w-1/3">
+        <p class="text-sm text-zinc-500">
+          price
+          <span class="text-[8px] text-zinc-600">(per 1000)</span>
+        </p>
+        <p
+          class="text-zinc-400 bg-zinc-950 py-2 px-4 rounded-xl mt-2 border border-zinc-700 truncate"
+        >
+          {{ service.rate | currency }}
+        </p>
+      </div>
+    </div>
+
+    <!-- link -->
+    <p class="text-sm text-zinc-500">enter your link:</p>
+    <app-input
+      theme="4"
+      name="link"
+      (changeHandler)="linkChange($event)"
+    ></app-input>
+
+    <!-- quantity -->
+    <p class="text-sm text-zinc-500">enter the quantity you want:</p>
+    <app-input
+      theme="4"
+      type="number"
+      name="quantity"
+      (changeHandler)="quantityChange($event)"
+      [value]="service.min"
+    ></app-input>
+
+    <!-- overal price -->
+    <p class="text-sm text-zinc-500">overal price:</p>
+    <p
+      class="text-zinc-400 bg-zinc-950 py-2 px-4 rounded-xl mt-2 border border-zinc-700"
+    >
+      {{
+        quantity
+          ? ((quantity * service.rate) / 1000 | currency)
+          : ((service.min * service.rate) / 1000 | currency)
+      }}
+    </p>
+
+    <!-- buttons -->
+    <div class="flex justify-end gap-2 mt-2">
+      <app-button
+        theme="1"
+        [text]="orderState !== 'load' ? 'Cancel' : 'wait ...'"
+        (click)="orderState !== 'load' ? closeSumbitOrderPopup() : null"
+      ></app-button>
+      <app-button
+        theme="0"
+        [text]="orderState !== 'load' ? 'Order' : 'wait ...'"
+        (click)="orderState !== 'load' ? handleOrder() : null"
+      ></app-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- emptpy space filer -->
+<div class="min-h-screen">
+  <!-- list of services -->
+  <div>
+    <!-- service header -->
+    <div
+      class="w-full bg-zinc-900 rounded-2xl text-zinc-500 flex justify-between gap-4 border-t border-t-zinc-800 overflow-hidden transition-all duration-100 sm:py-4 sm:px-6 p-4"
+    >
+      <p class="w-10">cost</p>
+      <p class="w-10">remains</p>
+      <p class="w-24">status</p>
+    </div>
+
+    <!-- service item -->
+    <!-- to controll view type 1 & 0-->
+    <div>
+      <div
+        class="bg-zinc-900 rounded-2xl sm:px-6 sm:py-4 p-4 text-zinc-500 mt-4"
+        *ngFor="let filteredService of filteredServices"
+      >
+        <!-- view type 0 -->
+        <div *ngIf="viewType == 0" class="w-full flex justify-between gap-4">
+          <p class="w-10">{{ filteredService.charge | currency }}</p>
+          <p class="w-10">{{ filteredService.remains }}</p>
+          <p class="w-24 truncate">{{ filteredService.status }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- error -->
+  <div
+    class="w-full bg-zinc-900 rounded-2xl mt-4 sm:px-6 sm:py-4 p-4 text-rose-600 flex gap-4 border-2 border-rose-600"
+    *ngIf="servicesError"
+  >
+    <p>{{ servicesError }}</p>
+  </div>
+</div>

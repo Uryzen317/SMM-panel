@@ -1,0 +1,222 @@
+<header
+  class="bg-zinc-900 w-full h-14 px-4 flex items-center justify-between sticky top-0 z-50 shadow-sm shadow-zinc-950"
+>
+  <!-- website info -->
+  <div class="flex gap-3 items-center">
+    <a routerLink="">
+      <p
+        class="text-4xl font-medium cursor-pointer bg-clip-text bg-gradient-to-r from-rose-700 to-rose-500 text-transparent mr-2"
+      >
+        SMM Panel
+      </p>
+    </a>
+    <!-- quick navigation -->
+    <div class="sm:flex gap-4 text-rose-600 text-sm hidden items-center">
+      <a
+        class="cursor-pointer hover:text-rose-200 transition-colors duration-100"
+        >Services</a
+      >
+      <a
+        class="cursor-pointer hover:text-rose-200 transition-colors duration-100"
+        >Account</a
+      >
+      <a
+        class="cursor-pointer hover:text-rose-200 transition-colors duration-100"
+        >Support</a
+      >
+
+      <!-- language -->
+      <div
+        class="w-14 h-6 bg-zinc-800 rounded-md flex gap-2 items-center px-2 relative group"
+      >
+        <!-- current one -->
+        <p class="text-md text-zinc-500">EN</p>
+        <img
+          src="../../assets/index/en.png"
+          alt="english smm panel"
+          class="w-4 h-4"
+        />
+
+        <!-- list -->
+        <div
+          class="absolute top-6 left-0 h-0 w-14 bg-zinc-800 rounded-md group-hover:border border-zinc-500 space-y-1 group-hover:py-1 overflow-hidden transition-all duration-100 group-hover:h-fit"
+        >
+          <!-- lan one -->
+          <div class="flex gap-2 px-2 items-center hover:bg-rose-600">
+            <p class="text-md text-zinc-500">EN</p>
+            <img
+              src="../../assets/index/en.png"
+              alt="english smm panel"
+              class="w-4 h-4"
+            />
+          </div>
+
+          <!-- lan two -->
+          <div class="flex gap-2 px-2 items-center hover:bg-rose-600">
+            <p class="text-md text-zinc-500">EN</p>
+            <img
+              src="../../assets/index/en.png"
+              alt="english smm panel"
+              class="w-4 h-4"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- user info -->
+
+  <!-- desktop -->
+  <!-- user not logged in -->
+  <div *ngIf="authState?.status !== 'success'" class="hidden sm:block">
+    <p class="text-zinc-400 text-lg cursor-pointer">
+      <a routerLink="/auth/login">
+        <span class="hover:text-rose-600 transition-colors duration-100"
+          >Login</span
+        >
+      </a>
+      /
+      <a routerLink="/auth/signup">
+        <span class="hover:text-rose-600 transition-colors duration-100"
+          >Signup</span
+        >
+      </a>
+    </p>
+  </div>
+
+  <!-- user logged in -->
+  <div
+    *ngIf="authState?.status === 'success'"
+    class="hidden sm:block text-zinc-400 w-32 truncate text-right"
+  >
+    <a routerLink="/panel/account">{{ authState?.user.username }}</a>
+  </div>
+
+  <!-- in small devices -->
+  <div class="block sm:hidden">
+    <!-- menu icon -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="48"
+      viewBox="0 96 960 960"
+      width="48"
+      class="fill-rose-600 z-50"
+      (click)="headerState = !headerState"
+    >
+      <path
+        d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"
+        *ngIf="!headerState"
+      />
+      <path
+        d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"
+        *ngIf="headerState"
+      />
+    </svg>
+
+    <!-- menu list -->
+    <div>
+      <!-- background -->
+      <div
+        class="absolute top-0 left-0 h-screen w-screen bg-black opacity-75 -z-10"
+        *ngIf="headerState"
+        (click)="headerState = !headerState"
+      ></div>
+
+      <!-- list of items -->
+      <div
+        class="absolute top-14 h-fit w-48 transition-all duration-200 ease-in"
+        [class.left-0]="headerState"
+        [class.-left-72]="!headerState"
+      >
+        <!-- username -->
+        <!-- not logged in -->
+        <div
+          class="w-48 bg-zinc-900 px-4 py-2 h-12 border border-rose-600"
+          (click)="headerState = !headerState"
+          *ngIf="authState?.status !== 'success'"
+        >
+          <p class="text-zinc-400 text-lg">
+            <a routerLink="/auth/login">
+              <span class="hover:text-rose-600 transition-colors duration-100"
+                >Login</span
+              >
+            </a>
+            /
+            <a routerLink="/auth/signup">
+              <span class="hover:text-rose-600 transition-colors duration-100"
+                >Signup</span
+              >
+            </a>
+          </p>
+        </div>
+
+        <!-- logged in -->
+        <div
+          class="text-zinc-400 w-48 truncate bg-zinc-900 px-4 py-2 flex gap-4 items-center h-12 border border-rose-600"
+          (click)="headerState = !headerState"
+          *ngIf="authState?.status === 'success'"
+        >
+          <a routerLink="/panel/account">{{ authState?.user.username }}</a>
+        </div>
+
+        <!-- items -->
+        <div
+          *ngFor="let headerItem of headerItems"
+          class="bg-zinc-800 px-4 py-2 flex gap-4 items-center h-12 border-b border-b-zinc-500 border-x border-x-zinc-500"
+          [routerLink]="headerItem.link"
+          (click)="headerState = !headerState"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            viewBox="0 96 960 960"
+            width="48"
+            class="w-6 h-6 fill-rose-600"
+          >
+            <path [attr.d]="headerItem.svg" />
+          </svg>
+          <p class="text-zinc-300">{{ headerItem.name }}</p>
+        </div>
+
+        <!-- language -->
+        <div
+          class="px-5 py-2 flex gap-4 items-center h-12 w-full bg-zinc-800 flex gap-2 items-center relative group border-b border-b-zinc-500 border-x border-x-zinc-500"
+        >
+          <!-- current one -->
+          <img
+            src="../../assets/index/en.png"
+            alt="english smm panel"
+            class="w-4 h-4"
+          />
+          <p class="text-zinc-300">EN</p>
+
+          <!-- list -->
+          <div
+            class="absolute top-12 left-0 h-0 w-full bg-zinc-800 group-hover:border border-zinc-500 space-y-1 group-hover:py-1 overflow-hidden transition-all duration-100 group-hover:h-fit"
+          >
+            <!-- lan one -->
+            <div class="flex gap-2 px-2 items-center hover:bg-rose-600 h-8">
+              <p class="text-md text-zinc-500">EN</p>
+              <img
+                src="../../assets/index/en.png"
+                alt="english smm panel"
+                class="w-4 h-4"
+              />
+            </div>
+
+            <!-- lan two -->
+            <div class="flex gap-2 px-2 items-center hover:bg-rose-600 h-8">
+              <p class="text-md text-zinc-500">EN</p>
+              <img
+                src="../../assets/index/en.png"
+                alt="english smm panel"
+                class="w-4 h-4"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

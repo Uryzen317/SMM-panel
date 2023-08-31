@@ -1,0 +1,198 @@
+<!-- main container -->
+<div class="w-full h-fit py-32 flex justify-center items-center bg-zinc-800">
+  <!-- log in -->
+  <div
+    class="w-96 h-fit bg-zinc-900 px-6 pt-8 pb-4 rounded-2xl shadow-sm shadow-rose-600"
+    *ngIf="state === 'login'"
+  >
+    <form class="flex flex-wrap gap-4">
+      <!-- status -->
+      <div *ngIf="loginStatus">
+        <p class="text-rose-500">{{ loginStatus }}</p>
+      </div>
+
+      <!-- username section -->
+      <div class="w-full flex justify-between items-center">
+        <label class="text-zinc-400" name="username">Username :</label>
+        <app-input
+          placeholder="username"
+          class="shadow-sm"
+          name="username"
+          type="text"
+          theme="1"
+          (changeHandler)="changeHandler($event, 'username')"
+        ></app-input>
+      </div>
+
+      <!-- password section -->
+      <div class="w-full flex justify-between items-center">
+        <label class="text-zinc-400">Password :</label>
+        <app-input
+          placeholder="password"
+          name="password"
+          theme="1"
+          (changeHandler)="changeHandler($event, 'password')"
+          type="password"
+        ></app-input>
+      </div>
+
+      <!-- remember me section -->
+      <div class="w-full flex justify-start gap-4 items-center">
+        <label class="text-zinc-400">Remember me :</label>
+        <app-input
+          type="checkbox"
+          class="mt-1"
+          name="rememberme"
+          theme="2"
+          (changeHandler)="changeHandler($event, 'rememberme')"
+        ></app-input>
+      </div>
+
+      <!-- submition section -->
+      <div class="w-full">
+        <app-button text="Login" theme="0" (click)="login()"></app-button>
+      </div>
+
+      <!-- extra -->
+      <div class="mt-1 text-zinc-500 text-sm flex flex-col gap-1">
+        <a
+          class="cursor-pointer hover:text-rose-500 transition-all duration-100"
+          routerLink="/auth/signup"
+          ><p>You don't have an account ?</p></a
+        >
+        <a
+          class="cursor-pointer hover:text-rose-500 transition-all duration-100"
+          routerLink="/auth/forgot-password"
+          ><p>Forgot your password ?</p>
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <!-- sign up -->
+  <div
+    class="w-96 h-fit bg-zinc-900 px-6 pt-8 pb-4 rounded-2xl shadow-sm shadow-rose-600"
+    *ngIf="state === 'signup'"
+  >
+    <form class="flex flex-wrap gap-4">
+      <!-- status -->
+      <div *ngIf="signupStatus">
+        <p class="text-rose-500">{{ signupStatus }}</p>
+      </div>
+
+      <!-- username section -->
+      <div class="w-full flex justify-between items-center">
+        <label class="text-zinc-400">Username :</label>
+        <app-input
+          placeholder="username"
+          class="shadow-sm"
+          name="username"
+          (changeHandler)="changeHandler($event, 'username')"
+        ></app-input>
+      </div>
+
+      <!-- email section -->
+      <div class="w-full flex justify-between items-center">
+        <label class="text-zinc-400">Email :</label>
+        <app-input
+          placeholder="email"
+          class="shadow-sm"
+          name="email"
+          type="email"
+          (changeHandler)="changeHandler($event, 'email')"
+        ></app-input>
+      </div>
+
+      <!-- password section -->
+      <div class="w-full flex justify-between items-center">
+        <label class="text-zinc-400">Password :</label>
+        <app-input
+          placeholder="password"
+          name="password"
+          type="password"
+          (changeHandler)="changeHandler($event, 'password')"
+        ></app-input>
+      </div>
+
+      <!-- repeat password section -->
+      <div class="w-full flex justify-between items-center">
+        <label class="text-zinc-400">Repeat Password :</label>
+        <app-input
+          placeholder="repeat password"
+          name="password"
+          type="password"
+          (changeHandler)="changeHandler($event, 'repeatPassword')"
+        ></app-input>
+      </div>
+
+      <!-- remember me section -->
+      <div class="w-full flex justify-start gap-4 items-center">
+        <label class="text-zinc-400">Remember me :</label>
+        <app-input
+          type="checkbox"
+          class="mt-1"
+          name="rememberme"
+          theme="2"
+          (changeHandler)="changeHandler($event, 'rememberme')"
+        ></app-input>
+      </div>
+
+      <!-- submition section -->
+      <div class="w-full">
+        <app-button text="Sign up" theme="0" (click)="signup()"></app-button>
+      </div>
+
+      <!-- extra -->
+      <div class="mt-1 text-zinc-500 text-sm flex flex-col gap-1">
+        <a
+          class="cursor-pointer hover:text-rose-500 transition-all duration-100"
+          routerLink="/auth/login"
+          ><p>already have an account ?</p></a
+        >
+        <a
+          class="cursor-pointer hover:text-rose-500 transition-all duration-100"
+          routerLink="/auth/forgot-password"
+          ><p>Forgot your password ?</p>
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <!-- forgot password -->
+  <div
+    class="w-96 h-fit bg-zinc-900 px-6 pt-8 pb-4 rounded-2xl shadow-sm shadow-rose-600"
+    *ngIf="state === 'forgot-password'"
+  >
+    <form class="flex flex-wrap gap-4">
+      <!-- status -->
+      <div *ngIf="forgotPasswordStatus">
+        <p class="text-rose-500">{{ forgotPasswordStatus }}</p>
+      </div>
+
+      <!-- username section -->
+      <div class="w-full flex justify-between items-center">
+        <label class="text-zinc-400" name="username">Email :</label>
+        <app-input
+          placeholder="username or email"
+          class="shadow-sm"
+          name="email"
+          (changeHandler)="changeHandler($event, 'email')"
+        ></app-input>
+      </div>
+
+      <!-- submition section -->
+      <div class="w-full">
+        <app-button text="Submit" theme="0"></app-button>
+      </div>
+
+      <!-- extra -->
+      <div class="mt-1 text-zinc-500 text-sm flex flex-col gap-1">
+        <a
+          class="cursor-pointer hover:text-rose-500 transition-all duration-100"
+          routerLink="/auth/login"
+          ><p>Back</p></a
+        >
+      </div>
+    </form>
+  </div>
+</div>

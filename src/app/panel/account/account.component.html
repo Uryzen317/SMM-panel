@@ -1,0 +1,244 @@
+<!-- balance and orders -->
+<div class="flex justify-between flex-wrap sm:gap-8 gap-4 sm:mt-0 mt-4">
+  <!-- balance -->
+  <div
+    routerLink="/panel/charge"
+    class="w-full sm:w-fit sm:jusitfy-left justify-center bg-zinc-900 rounded-2xl py-4 pr-8 pl-4 h-16 text-2xl text-zinc-500 flex items-center shadow-md shadow-black hover:shadow-sm cursor-pointer transition-all duration-200"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="48"
+      viewBox="0 96 960 960"
+      width="48"
+      class="fill-rose-600 w-10"
+    >
+      <path
+        d="M481 936q-13 0-21.5-8.5T451 906v-54q-48-8-82-34t-53-66q-5-11 0-23t17-17q11-5 22.5 0t17.5 16q18 34 47 51t67 17q48 0 79-24t31-66q0-44-27.5-68T466 589q-72-23-107.5-61T323 433q0-55 35.5-92t92.5-42v-53q0-13 8.5-21.5T481 216q13 0 21.5 8.5T511 246v53q36 5 64.5 22t47.5 44q7 10 3 21.5T610 403q-11 5-23 1t-20-15q-14-18-34.5-26.5T483 354q-46 0-73 21t-27 57q0 38 30 61.5T524 542q68 21 100.5 60.5T657 702q0 63-37 101.5T511 853v53q0 13-8.5 21.5T481 936Z"
+      />
+    </svg>
+    <p>
+      Balance :
+      <span class="text-zinc-300">{{ user.user?.money | currency }} </span>
+    </p>
+  </div>
+
+  <!-- orders -->
+  <div
+    routerLink="/panel/orders"
+    class="w-full sm:w-fit sm:jusitfy-left justify-center bg-zinc-900 rounded-2xl py-4 pr-8 pl-6 h-16 text-2xl text-zinc-500 flex items-center gap-2 shadow-md shadow-black hover:shadow-sm cursor-pointer transition-all duration-200"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="48"
+      viewBox="0 96 960 960"
+      width="48"
+      class="fill-rose-600 w-9"
+    >
+      <path
+        d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z"
+      />
+    </svg>
+    <p>
+      Orders : <span class="text-zinc-300">{{ 100 }} </span>
+    </p>
+  </div>
+</div>
+
+<!-- account info -->
+<div
+  class="mt-8 w-full rounded-2xl sm:px-8 sm:pt-4 sm:pb-6 p-4 bg-zinc-900 shadow-md shadow-black transition-all duration-200 hover:shadow-sm flex flex-col gap-4"
+>
+  <!-- header -->
+  <p class="text-zinc-500 text-sm flex">account info :</p>
+
+  <!-- data -->
+  <div class="flex justify-between flex-wrap gap-4">
+    <!-- username -->
+    <div class="flex gap-2 items-center">
+      <label class="text-zinc-400 sm:w-28 w-24">username : </label>
+      <app-input
+        theme="3"
+        [value]="user.user?.username"
+        class="shrink"
+      ></app-input>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        viewBox="0 96 960 960"
+        width="48"
+        class="fill-rose-600 border-2 border-rose-600 rounded-xl w-11 h-11 p-1 hover:cursor-pointer hover:shadow-md hover:shadow-rose-600 transition-all duration-200"
+        (click)="popupState = 1"
+      >
+        <path
+          d="M180 876h44l443-443-44-44-443 443v44Zm614-486L666 262l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248 936H120V808l504-504 128 128Zm-107-21-22-22 44 44-22-22Z"
+        />
+      </svg>
+    </div>
+
+    <!-- email -->
+    <div class="flex gap-2 items-center">
+      <label class="text-zinc-400 sm:w-28 w-24">email : </label>
+      <app-input theme="3" [value]="user.user?.email"></app-input>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        viewBox="0 96 960 960"
+        width="48"
+        class="fill-rose-600 border-2 border-rose-600 rounded-xl w-11 h-11 p-1 hover:cursor-pointer hover:shadow-md hover:shadow-rose-600 transition-all duration-200"
+        (click)="popupState = 2"
+      >
+        <path
+          d="M180 876h44l443-443-44-44-443 443v44Zm614-486L666 262l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248 936H120V808l504-504 128 128Zm-107-21-22-22 44 44-22-22Z"
+        />
+      </svg>
+    </div>
+
+    <!-- pasword -->
+    <div class="flex gap-2 items-center">
+      <label class="text-zinc-400 sm:w-28 w-24">password : </label>
+      <app-input theme="3" value="********"></app-input>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        viewBox="0 96 960 960"
+        width="48"
+        class="fill-rose-600 border-2 border-rose-600 rounded-xl w-11 h-11 p-1 hover:cursor-pointer hover:shadow-md hover:shadow-rose-600 transition-all duration-200"
+        (click)="popupState = 3"
+      >
+        <path
+          d="M180 876h44l443-443-44-44-443 443v44Zm614-486L666 262l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248 936H120V808l504-504 128 128Zm-107-21-22-22 44 44-22-22Z"
+        />
+      </svg>
+    </div>
+
+    <!-- confirm email -->
+    <div class="flex gap-2 items-center">
+      <label class="text-zinc-400 w-28">confirm email : </label>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        viewBox="0 96 960 960"
+        width="48"
+        class="border-2 rounded-xl w-11 h-11 hover:cursor-pointer hover:shadow-md transition-all duration-200"
+        [class.fill-zinc-500]="user?.user?.isEmailConfirmed"
+        [class.fill-rose-600]="!user?.user?.isEmailConfirmed"
+        [class.border-zinc-500]="user?.user?.isEmailConfirmed"
+        [class.border-rose-600]="!user?.user?.isEmailConfirmed"
+        [class.hover:shadow-zinc-500]="user?.user?.isEmailConfirmed"
+        [class.hover:shadow-rose-600]="!user?.user?.isEmailConfirmed"
+        (click)="user?.user?.isEmailConfirmed ? null : (popupState = 4)"
+      >
+        <path
+          d="M378 798q-6 0-11-2t-10-7L176 608q-9-9-9-22t9-22q9-9 21-9t21 9l160 160 363-363q9-9 21.5-9t21.5 9q9 9 9 21.5t-9 21.5L399 789q-5 5-10 7t-11 2Z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- advanced info -->
+<div
+  class="mt-8 w-full rounded-2xl sm:px-8 sm:pt-4 sm:pb-6 p-4 bg-zinc-900 shadow-md shadow-black transition-all duration-200 hover:shadow-sm flex flex-col gap-4"
+>
+  <!-- header -->
+  <p class="text-zinc-500 text-sm flex">advanced settings :</p>
+
+  <!-- data -->
+  <div class="flex justify-between flex-wrap gap-4">
+    <!-- api key -->
+    <div class="flex gap-2 items-center">
+      <label class="text-zinc-400">API key : </label>
+      <app-input theme="3" [value]="user?.user?.apiKey"></app-input>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        viewBox="0 96 960 960"
+        width="48"
+        class="fill-rose-600 border-2 border-rose-600 rounded-xl w-11 h-11 p-2 hover:cursor-pointer hover:shadow-md hover:shadow-rose-600 transition-all duration-200"
+        (click)="handleCopyApiKey()"
+      >
+        <path
+          d="M780 896H260q-24 0-42-18t-18-42V196q0-24 18-42t42-18h323q12.444 0 23.722 5T626 154l196 196q8 8 13 19.278 5 11.278 5 23.722v443q0 24-18 42t-42 18ZM578 196H260v640h520V394H608q-12.75 0-21.375-8.625T578 364V196Zm-438 820q-24 0-42-18t-18-42V367q0-12.75 8.675-21.375 8.676-8.625 21.5-8.625 12.825 0 21.325 8.625T140 367v589h468q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T608 1016H140Zm120-820v198-198 640-640Z"
+        />
+      </svg>
+    </div>
+
+    <!-- log out -->
+    <div class="flex gap-2 items-center">
+      <label class="text-zinc-400">logout : </label>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        viewBox="0 96 960 960"
+        width="48"
+        class="fill-rose-600 border-2 border-rose-600 rounded-xl w-11 h-11 hover:cursor-pointer hover:shadow-md hover:shadow-rose-600 transition-all duration-200 p-2"
+        (click)="popupState = 5"
+      >
+        <path
+          d="M645 729q-9-9-9-21.75t9-21.25l80-80H405q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T405 546h318l-81-81q-8-8-8-20.447 0-12.448 9.214-21.5Q651.661 414 664.33 414q12.67 0 21.67 9l133 133q5 5 7 10.133 2 5.134 2 11Q828 583 826 588q-2 5-7 10L687 730q-8 8-20.5 8t-21.5-9ZM180 936q-24 0-42-18t-18-42V276q0-24 18-42t42-18h261q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T441 276H180v600h261q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T441 936H180Z"
+        />
+      </svg>
+    </div>
+
+    <!-- delet account -->
+    <div class="flex gap-2 items-center">
+      <label class="text-zinc-400">delete account : </label>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        viewBox="0 96 960 960"
+        width="48"
+        class="fill-rose-600 border-2 border-rose-600 rounded-xl w-11 h-11 hover:cursor-pointer hover:shadow-md hover:shadow-rose-600 transition-all duration-200 p-1"
+        (click)="popupState = 6"
+      >
+        <path
+          d="M678 514q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T678 454h172q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T850 514H678Zm-318 61q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM70 896q-12.75 0-21.375-8.625T40 866v-64q0-35 17.5-63.5T108 696q75-33 133.338-46.5 58.339-13.5 118.5-13.5Q420 636 478 649.5 536 663 611 696q33 15 51 43t18 63v64q0 12.75-8.625 21.375T650 896H70Zm30-60h520v-34q0-16-9-30.5T587 750q-71-33-120-43.5T360 696q-58 0-107.5 10.5T132 750q-15 7-23.5 21.5T100 802v34Zm260-321q39 0 64.5-25.5T450 425q0-39-25.5-64.5T360 335q-39 0-64.5 25.5T270 425q0 39 25.5 64.5T360 515Zm0-90Zm0 271Z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- popup management -->
+
+<!-- username change -->
+<app-popup
+  theme="1"
+  (handleUsernameResult)="handleUsernameResult($event)"
+  *ngIf="popupState == 1"
+></app-popup>
+
+<!-- email change -->
+<app-popup
+  theme="2"
+  (handleEmailResult)="handleEmailResult($event)"
+  *ngIf="popupState == 2"
+></app-popup>
+
+<!-- password change -->
+<app-popup
+  theme="3"
+  (handlePasswordResult)="handlePasswordResult($event)"
+  *ngIf="popupState == 3"
+></app-popup>
+
+<!-- confirm email change -->
+<app-popup
+  theme="4"
+  (handleConfirmEmailResult)="handleConfirmEmailResult($event)"
+  *ngIf="popupState == 4"
+></app-popup>
+
+<!-- log out -->
+<app-popup
+  theme="5"
+  (handleLogoutResult)="handleLogoutResult($event)"
+  *ngIf="popupState == 5"
+></app-popup>
+
+<!-- delete account -->
+<app-popup
+  theme="6"
+  (handleDeleteAccountResult)="handleDeleteAccountResult($event)"
+  *ngIf="popupState == 6"
+></app-popup>

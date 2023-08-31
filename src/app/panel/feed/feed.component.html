@@ -1,0 +1,69 @@
+<!-- nothing found yet -->
+<div
+  class="text-zinc-500 bg-zinc-900 border-2 border-zinc-600 rounded-2xl sm:px-6 sm:py-4 p-4"
+  *ngIf="!feeds.length"
+>
+  <!-- header -->
+  <div class="flex justify-between align-top gap-4">
+    <p class="font-bold text-zinc-400 text-justify justify-between">
+      Nothing here yet !
+    </p>
+  </div>
+  <p class="text-zinc-500 mt-2 text-justify justify-evenly">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nesciunt error
+    laborum officia voluptatem quas quo id illo eaque, exercitationem, nobis
+    velit consequatur voluptate reprehenderit? Incidunt pariatur ducimus illo
+    est.
+  </p>
+</div>
+
+<!-- items -->
+<div
+  class="text-zinc-500 bg-zinc-900 border-2 border-zinc-600 rounded-2xl sm:px-6 sm:py-4 p-4 mt-4"
+  *ngFor="let feed of feeds"
+  [class.hidden]="!feed.status"
+>
+  <!-- header -->
+  <div
+    class="flex justify-between align-top gap-4 border-b border-b-zinc-600 pb-1"
+  >
+    <!-- header and details-->
+    <div class="w-full">
+      <!-- header -->
+      <p class="font-bold text-zinc-400 text-justify justify-between mb-1">
+        {{ feed.header }}
+      </p>
+
+      <!-- extra -->
+      <div class="flex text-sm text-zinc-500 justify-between">
+        <!-- author -->
+        <p><span class="text-zinc-600">By: </span> {{ feed.author }}</p>
+
+        <!-- data -->
+        <p><span class="text-zinc-600">At: </span> {{ feed.date | date }}</p>
+      </div>
+    </div>
+
+    <!-- close button -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="48"
+      viewBox="0 96 960 960"
+      width="48"
+      class="fill-zinc-500 w-6 hover:fill-rose-600 transition-all duration-200 -translate-y-2 shrink-0"
+      (click)="feed.status = false"
+    >
+      <path
+        d="m336 762 144-144 144 144 42-42-144-144 144-144-42-42-144 144-144-144-42 42 144 144-144 144 42 42ZM180 936q-24 0-42-18t-18-42V276q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm0-60h600V276H180v600Zm0-600v600-600Z"
+      />
+    </svg>
+  </div>
+
+  <!-- text -->
+  <p class="text-zinc-500 mt-2 text-justify justify-evenly">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nesciunt error
+    laborum officia voluptatem quas quo id illo eaque, exercitationem, nobis
+    velit consequatur voluptate reprehenderit? Incidunt pariatur ducimus illo
+    est.
+  </p>
+</div>
